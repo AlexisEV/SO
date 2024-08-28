@@ -1,0 +1,14 @@
+CC = gcc
+
+main.static.exe:ucsp.o libucsp.a
+	$(CC) -o main.static.exe main.c -L. libucsp.a
+
+libucsp.a:libucsp.o
+	ar rcs libucsp.a libucsp.o
+
+libucsp.o:ucsp.c
+	$(CC) -c ucsp.c -o libucsp.o
+
+clean:
+	rm -f main.static.exe libucsp.a libucsp.o
+

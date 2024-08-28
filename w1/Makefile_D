@@ -1,0 +1,14 @@
+CC = gcc
+
+main.dynamic.exe:ucsp.o libucsp.so
+	$(CC) main.c -L. -lucsp -o main.dynamic.exe
+
+libucsp.so:ucsp.o
+	$(CC) -shared -o libucsp.so ucsp.o
+
+ucsp.o:ucsp.c
+	$(CC) -c -fPIC ucsp.c
+
+clean:
+	rm -f main.dynamic.exe libucsp.so ucsp.o
+
